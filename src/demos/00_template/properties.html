@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>React - Properties</title>
+    <script src="../../js/react.min.js"></script>
+    <script src="../../js/react-dom.min.js"></script>
+    <script src="../../js/browser.min.js"></script>
+</head>
+<body>
+
+    <div id="container"></div>
+
+    <script type="text/babel">
+        var Movie = React.createClass({
+            render: function() {
+                return (
+                    <div>
+                        <h2>{this.props.title}</h2>
+                        <p>{this.props.genre}</p>
+                    </div>
+                );
+            }
+        });
+        ReactDOM.render(
+          <div>
+            <Movie title="Avatar" genre="action" />
+            <Movie title="The Notebook" genre="romance" />
+            <Movie title="Captain America" genre="action" />
+          </div>
+          , document.getElementById('container'));
+    </script>
+
+</body>
+</html>
