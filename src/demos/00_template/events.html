@@ -59,7 +59,7 @@
         });
 
         var Board = React.createClass({
-            getInitialState: function() {
+            getInitialState: function () {
                 return {
                     comments: [
                         'I like fish',
@@ -69,13 +69,33 @@
                 }
             },
 
-            render: function() {
+            removeComment: function (i) {
+                conole.log('Removing comment: ' + i);
+                var arr = this.state.comments;
+                arr.splice(i, 1);
+                this.setState({comments}, arr);
+            },
+
+            upudateComment: function(newText, i) {
+                conole.log('Updating comment: ' + i);
+                var arr = this.state.comments;
+                arr[i] = newText;
+                this.setState({comments}, arr);
+            },
+
+            eachComment: function (text, i) {
+                return (
+                    <Comment key={i} index={i}>
+                        {text}
+                    </Comment>
+                );
+            },
+
+            render: function () {
                 return (
                     <div className="board">
                         {
-                            this.state.comments.map(function(text, i) {
-                                return (<Comment>{text}</Comment>);
-                            })
+                            this.state.comments.map(this.eachComment)
                         }
                     </div>
                 );
